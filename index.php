@@ -217,8 +217,8 @@
 <!-- --------------------------------  Fin Pasajeros------------------------- -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<!-- Incluye Culqi Checkout en tu sitio web-->
-<script src="https://checkout.culqi.com/js/v3"></script>
+<!-- Incluyendo .js de Culqi JS -->
+<script src="https://checkout.culqi.com/v2"></script>
 
 <script>
 		// Configura tu llave pública
@@ -282,7 +282,7 @@
 						</div>
 						<div class="item3">
 							<!--Pagar-->
-							<button class="button" id="buyButton">Pagar</button>
+							<button class="button" type="submit" id="buyButton">Pagar</button>
 						</div>
 					</div>
 					  					  					  						  										
@@ -293,32 +293,26 @@
 <!-- --------------------------------  Fin Datos de la tarjeta ------------------------- -->		
 	
 	<script>
+		function culqi() {
+				if (Culqi.token) { // ¡Objeto Token creado exitosamente!
+					var token = Culqi.token.id;
+					alert('Se ha creado un token:' + token);
+			} else { // ¡Hubo algún problema!
+				// Mostramos JSON de objeto error en consola
+				console.log(Culqi.error);
+				alert(Culqi.error.user_message);
+			}
+		};
+
 		$('#buyButton').on('click', function(e) {
 			// Crea el objeto Token con Culqi JS
 			Culqi.createToken();
 			e.preventDefault();
 		});
 
-		function culqi() {
-    		if (Culqi.token) { // ¡Objeto Token creado exitosamente!
-        		var token = Culqi.token.id;
-        		alert('Se ha creado un token:' + token);
-    		} else { // ¡Hubo algún problema!
-        	// Mostramos JSON de objeto error en consola
-        		console.log(Culqi.error);
-        		alert(Culqi.error.user_message);
-    		}
-  		};
-
+		
 	</script>
 
-<script>
-  $('#buyButton').on('click', function(e) {
-      // Crea el objeto Token con Culqi JS
-      Culqi.createToken();
-      e.preventDefault();
-  });
-</script>
 		<style>
 			.button {
 				background-color: #f44336; /* Red */
