@@ -215,20 +215,9 @@
 			</div>
 		</div>
 <!-- --------------------------------  Fin Pasajeros------------------------- -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-
-<!-- Incluyendo .js de Culqi JS -->
-<script src="https://checkout.culqi.com/v2"></script>
-
-<script>
-		// Configura tu llave pública
-		Culqi.publicKey = 'pk_test_NKvGxcfJs5mq7UMm';
-		// inicia tu Culqi Checkout
-		Culqi.init();
-</script>		
 
 <!-- --------------------------------  Datos de la tarjeta ------------------------- -->		
-	<form action="">
+	<form>
 		<div style="text-align: left;" class="section">
 			<h3>Datos de la Tarjeta</h3>
 		</div>
@@ -249,15 +238,15 @@
 					 	<div class="item3">        
 							<label for="">Fecha Cad.</label>
 							<br>
-							<input size="4" data-culqi="card[exp_month]" id="card[exp_month]">
+							<input size="4" data-culqi="card[exp_month]" id="card[exp_month]" placeholder="MM">
 							<span>/</span>
-							<input size="4" data-culqi="card[exp_year]" id="card[exp_year]">
+							<input size="4" data-culqi="card[exp_year]" id="card[exp_year]" placeholder="YYYY">
 						</div>
 						<div class="item4">
 						<!--Cod. Seguridad-->					          
 							<label for="">Cod. Seg</label>
 							<br>
-							<input type="text" name="" size="4" maxlength="4" required size="20" data-culqi="card[number]" id="card[number]">
+							<input type="text" name="" size="4" maxlength="4" required size="20" data-culqi="card[cvv]" id="card[cvv]">
 						</div>
 					</div>
 					<br>
@@ -272,7 +261,7 @@
 					<div>         
 		                <label for="">Correo Electronico </label>
 		                <br>
-		                <input type="email" name="" required size="50" >
+		                <input type="email" name="" required size="50" data-culqi="card[email]" id="card[email]">
 					</div>
 					<br>  
 				 	<!--Aceptar terminis y condiciones-->
@@ -291,7 +280,17 @@
 		</div>
 	</form>
 <!-- --------------------------------  Fin Datos de la tarjeta ------------------------- -->		
-	
+	<!-- Incluyendo .js de Culqi JS -->
+	<script src="https://checkout.culqi.com/v2"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<script>
+			// Configurar la llave pública
+			Culqi.publicKey = 'pk_test_NKvGxcfJs5mq7UMm';
+			// inicia la Culqi Checkout
+			Culqi.init();
+	</script>		
 	<script>
 		function culqi() {
 				if (Culqi.token) { // ¡Objeto Token creado exitosamente!
