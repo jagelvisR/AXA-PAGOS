@@ -11,12 +11,10 @@ $culqi = new Culqi\Culqi(array('api_key' => $SECRET_KEY));
 
 $charge = $culqi->Charges->create(
  array(
-     "amount" => $_POST["precioTotal"],
-     "currency_code" => "USD",
-     "email" => $_POST["tokenEmail"],
-     "source_id" => $_POST["token"]
+     "amount" => 1500,
+     "currency_code" => "PEN",
+     "email" => "test_charge@culqi.com",
+     "source_id" => "id del objeto Token o id del objeto Card"
    )
 );
-
-echo 'transaccion exitosa';
 ?>

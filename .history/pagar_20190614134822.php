@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- Incluyendo .js de Culqi JS -->
     <script src="https://checkout.culqi.com/js/v3"></script>
-
     <form>
         <div>
             <label>
@@ -40,56 +39,28 @@
       <input size="4" data-culqi="card[exp_year]" id="card[exp_year]" placeholder="YYYY">
     </label>
         </div>
-        <button class="button" id="buyButton" data-paquete="viaje" data-precio="250">Pagar</button>
+        <button class="button" id="buyButton" data-paquete="viaje" data-precio="1000">Pagar</button>
     </form>
     <script>
         // Configura tu llave pública
         Culqi.publicKey = 'pk_test_8wleaCihW75H9zHX';
-
-        let paqueteN = '';
-        let precioTotal = '';
+        
         // Usa la funcion Culqi.open() en el evento que desees
         $('#buyButton').on('click', function(e) {
 
-            paqueteN = $(this).attr('data-paquete');
-            precioTotal = $(this).attr('data-precio');
+            let paqueteN = $(this).attr('data-paquete');
+            let precioTotal = $(this).attr('data-precio');
             // Configura tu Culqi Checkout
             Culqi.settings({
                 title: paqueteN,
-                currency: 'USD', // USD dolares y PEN soles
-                description: 'Polo Culqi lover', // colocar descripcion del producto
+                currency: 'AXA',
+                description: 'Polo Culqi lover',// colocar descripcion del producto
                 amount: precioTotal // monto
             });
             // Abre el formulario con las opciones de Culqi.settings
             Culqi.open();
             e.preventDefault();
-
-
         });
-
-        function culqi() {
-            if (Culqi.token) { // ¡Objeto Token creado exitosamente!
-                let token = Culqi.token.id;
-                let tokenEmail = Culqi.token.email;
-                alert("transaccion exitosa");
-
-                var data = {
-                    paqueteN: paqueteN,
-                    precioTotal: precioTotal,
-                    token: token,
-                    tokenEmail: tokenEmail
-                };
-                let url = "pago.php";
-                alert(url);
-                $.post("pago.php", data, function(res) {
-                    alert('se hizo' + res);
-                });
-            } else { // ¡Hubo algún problema!
-                // Mostramos JSON de objeto error en consola
-                console.log(Culqi.error);
-                alert(Culqi.error.user_message);
-            }
-        };
     </script>
 
     <style>
@@ -108,3 +79,8 @@
 </body>
 
 </html>
+<?php 
+//recibir parametros
+
+
+?>

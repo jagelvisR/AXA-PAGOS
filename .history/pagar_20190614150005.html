@@ -79,8 +79,7 @@
                     token: token,
                     tokenEmail: tokenEmail
                 };
-                let url = "pago.php";
-                alert(url);
+
                 $.post("pago.php", data, function(res) {
                     alert('se hizo' + res);
                 });

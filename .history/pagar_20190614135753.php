@@ -12,7 +12,6 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!-- Incluyendo .js de Culqi JS -->
     <script src="https://checkout.culqi.com/js/v3"></script>
-
     <form>
         <div>
             <label>
@@ -45,7 +44,7 @@
     <script>
         // Configura tu llave pública
         Culqi.publicKey = 'pk_test_8wleaCihW75H9zHX';
-
+        
         let paqueteN = '';
         let precioTotal = '';
         // Usa la funcion Culqi.open() en el evento que desees
@@ -57,39 +56,25 @@
             Culqi.settings({
                 title: paqueteN,
                 currency: 'USD', // USD dolares y PEN soles
-                description: 'Polo Culqi lover', // colocar descripcion del producto
-                amount: precioTotal // monto
+                description: 'Polo Culqi lover',// colocar descripcion del producto
+                amount: precioTotal// monto
             });
             // Abre el formulario con las opciones de Culqi.settings
             Culqi.open();
             e.preventDefault();
-
-
         });
 
         function culqi() {
             if (Culqi.token) { // ¡Objeto Token creado exitosamente!
                 let token = Culqi.token.id;
-                let tokenEmail = Culqi.token.email;
-                alert("transaccion exitosa");
-
-                var data = {
-                    paqueteN: paqueteN,
-                    precioTotal: precioTotal,
-                    token: token,
-                    tokenEmail: tokenEmail
-                };
-                let url = "pago.php";
-                alert(url);
-                $.post("pago.php", data, function(res) {
-                    alert('se hizo' + res);
-                });
+                let data = {paqueteN:paqueteN}
             } else { // ¡Hubo algún problema!
                 // Mostramos JSON de objeto error en consola
                 console.log(Culqi.error);
                 alert(Culqi.error.user_message);
             }
         };
+
     </script>
 
     <style>
@@ -108,3 +93,8 @@
 </body>
 
 </html>
+<?php 
+//recibir parametros
+
+
+?>

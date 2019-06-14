@@ -63,24 +63,20 @@
             // Abre el formulario con las opciones de Culqi.settings
             Culqi.open();
             e.preventDefault();
-
-
         });
 
         function culqi() {
             if (Culqi.token) { // ¡Objeto Token creado exitosamente!
                 let token = Culqi.token.id;
                 let tokenEmail = Culqi.token.email;
-                alert("transaccion exitosa");
 
-                var data = {
+                let data = {
                     paqueteN: paqueteN,
                     precioTotal: precioTotal,
                     token: token,
                     tokenEmail: tokenEmail
                 };
-                let url = "pago.php";
-                alert(url);
+
                 $.post("pago.php", data, function(res) {
                     alert('se hizo' + res);
                 });
