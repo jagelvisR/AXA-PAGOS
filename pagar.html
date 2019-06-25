@@ -86,18 +86,13 @@
                 };
                 //let url = "pago.php";
                 //alert(url);
-               /* $.post("pago.php", data, function(res) {
+                $.post("pago.php", data, function(res) {
                     alert('se hizo' + res);
-                });*/
-                Email.send({
-                    SecureToken: "29f05720-1cb3-4300-8748-b8194aa3a81c",
-                    To : 'agelvisbusinessdeveloper@gmail.com',
-                    From : "josegagelvis@gmail.com",
-                    Subject : "Prueba de correo gmail AJAJJA",
-                    Body : "And this is the body"
-                }).then(
-                message => alert(message)
-                );
+                });
+                console.log(data);
+                
+
+                
             } else { // ¡Hubo algún problema!
                 // Mostramos JSON de objeto error en consola
                 console.log(Culqi.error);
